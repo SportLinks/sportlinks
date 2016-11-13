@@ -1,0 +1,40 @@
+[
+   {
+      "startDate":"2016-11-06T21:15",
+      "category_es":"Portugal",
+      "category_en":"Portugal",
+      "country_es":"",
+      "country_en":"",
+      "description":"Sporting CP - FC Arouca",
+      "streamings":[
+         {
+            "p2p":"P2P",
+            "name":"ArenaVision S3",
+            "language":"pt",
+            "type":"Sopcast (web)",
+            "kbps":"2700",
+            "url":"http://arenavision.in/avs3",
+            "urlSopcast":"sop://broker.sopcast.com:3912/262492"
+         }
+      ]
+   },
+   {
+      "startDate":"2016-11-06T22:00",
+      "category_es":"Chile",
+      "category_en":"Chile",
+      "country_es":"Primera División",
+      "country_en":"Primera Division",
+      "description":"San Luis de Quillota - Universidad de Concepcion",
+      "streamings":[
+         {
+            "p2p":"P2P",
+            "name":"ArenaVision S8",
+            "language":"es",
+            "type":"Sopcast (web)",
+            "kbps":"2700",
+            "url":"http://arenavision.in/avs8",
+            "urlSopcast":"sop://broker.sopcast.com:3912/262497"
+         }
+      ]
+   }
+]
