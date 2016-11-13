@@ -17,7 +17,7 @@ export default class ListShows extends React.Component {
     var _this = this;
     this.serverRequest =
       axios
-        .get("https://sopred.herokuapp.com/shows/acestream")
+        .get("https://sportlinks.herokuapp.com/shows/acestream")
         .then(function(result) {
           _this.setState({list: result.data});
         })
