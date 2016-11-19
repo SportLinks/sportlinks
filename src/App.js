@@ -5,8 +5,6 @@ import AppBar from 'material-ui/AppBar';
 import SelectShowSources from './components/SelectShowSources'
 import getShows from './services/getShows';
 
-//this.URL_GET_SHOWS = 'https://sportlinks.herokuapp.com/shows';
-
 export default class App extends React.Component {
 
   constructor(props) {
@@ -14,8 +12,8 @@ export default class App extends React.Component {
 
     this.sourcesUrl = [
       'https://sportlinks.herokuapp.com/shows',
-      'https://sportlinks.herokuapp.com/shows/acestream',
-      'https://sportlinks.herokuapp.com/shows/sopcast'
+      'https://sportlinks.herokuapp.com/shows?type=acestream',
+      'https://sportlinks.herokuapp.com/shows?type=sopcast'
     ];
 
     this.sourceNames = [
@@ -25,10 +23,21 @@ export default class App extends React.Component {
     ]
 
     this.state = {
-      sourceId: '0',
+      sourceId: '1',
       shows: [],
       loading: true
     }
+
+    this.styles = {
+      toolbarContainer: {
+        position: 'fixed',
+        width: '100%',
+        zIndex: 1
+      },
+    	box: {
+    		height: 65
+    	}
+    };
 
     this.updateShowsList(this.state.sourceId);
   }
@@ -62,10 +71,15 @@ export default class App extends React.Component {
     return (
       <MuiThemeProvider>
         <div>
-          <AppBar
-            title="Sport Links"
-            iconElementRight={<SelectShowSources source={this.state.sourceId} onSourceSelect={this.onSourceSelect}/>}
-          />
+          <div style={this.styles.toolbarContainer}>
+            <AppBar
+              title="Sport Links"
+              iconElementRight={<SelectShowSources
+                                  source={this.state.sourceId}
+                                  onSourceSelect={this.onSourceSelect}/>}
+            />
+          </div>
+          <div style={this.styles.box}></div>
           <ListShows shows={this.state.shows} source={this.sourceNames[this.state.sourceId]} loading={this.state.loading}/>
         </div>
       </MuiThemeProvider>
