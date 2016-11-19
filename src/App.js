@@ -35,7 +35,7 @@ export default class App extends React.Component {
 
   updateShowsList = (sourceId) => {
     this.serverRequest = getShows(this.sourcesUrl[sourceId]).then((result) => {
-      if (result != undefined) {
+      if (result !== undefined) {
         this.setState({
           sourceId: sourceId,
           shows: result.data,
