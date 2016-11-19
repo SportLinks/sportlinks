@@ -26,22 +26,22 @@ export default class App extends React.Component {
 
     this.state = {
       sourceId: '0',
-      shows: []
+      shows: [],
+      loading: true
     }
 
     this.updateShowsList(this.state.sourceId);
   }
 
   updateShowsList = (sourceId) => {
-    try {
-      this.serverRequest.abort();
-    } catch(error) {}
-
     this.serverRequest = getShows(this.sourcesUrl[sourceId]).then((result) => {
-      this.setState({
-        sourceId: sourceId,
-        shows: result.data
-      })
+      if (result != undefined) {
+        this.setState({
+          sourceId: sourceId,
+          shows: result.data,
+          loading: false
+        })
+      }
     });
   }
 
@@ -50,6 +50,11 @@ export default class App extends React.Component {
   }
 
   onSourceSelect = (sourceId) => {
+    this.setState({
+      sourceId: sourceId,
+      shows: [],
+      loading: true
+    })
     this.updateShowsList(sourceId);
   }
 
@@ -61,7 +66,7 @@ export default class App extends React.Component {
             title="Sport Links"
             iconElementRight={<SelectShowSources source={this.state.sourceId} onSourceSelect={this.onSourceSelect}/>}
           />
-          <ListShows shows={this.state.shows} source={this.sourceNames[this.state.sourceId]}/>
+          <ListShows shows={this.state.shows} source={this.sourceNames[this.state.sourceId]} loading={this.state.loading}/>
         </div>
       </MuiThemeProvider>
     );

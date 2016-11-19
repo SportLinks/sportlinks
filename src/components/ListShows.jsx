@@ -7,7 +7,7 @@ import dateFormat from 'dateformat';
 export default function ListShows(props) {
   return (
     <List>
-      <Subheader>Sport Shows ({props.source})</Subheader>
+      <Subheader>Sport Shows ({props.source}) {props.loading ? 'Loading...' : ''}</Subheader>
       {props.shows.map(function(listValue, index){
         return (
           <ListItem

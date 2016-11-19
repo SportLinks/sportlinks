@@ -1,5 +1,5 @@
-import axios from 'axios';
+import baseService from './baseService';
 
 export default function(url) {
-  return axios.get(url);
+  return baseService(url);
 }
