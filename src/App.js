@@ -2,53 +2,56 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ListShows from './components/ListShows';
 import AppBar from 'material-ui/AppBar';
+import DrawerLeft from './components/DrawerLeft';
 import SelectShowSources from './components/SelectShowSources'
 import getShows from './services/getShows';
+
+const sourcesUrl = [
+  'https://sportlinks.herokuapp.com/shows',
+  'https://sportlinks.herokuapp.com/shows?type=acestream',
+  'https://sportlinks.herokuapp.com/shows?type=sopcast'
+];
+
+const sourceNames = [
+  'All',
+  'Acestream',
+  'Sopcast'
+];
+
+const appBarStyles = {
+  toolbarContainer: {
+    position: 'fixed',
+    width: '100%',
+    zIndex: 1
+  },
+  box: {
+    height: 65
+  }
+};
 
 export default class App extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.sourcesUrl = [
-      'https://sportlinks.herokuapp.com/shows',
-      'https://sportlinks.herokuapp.com/shows?type=acestream',
-      'https://sportlinks.herokuapp.com/shows?type=sopcast'
-    ];
-
-    this.sourceNames = [
-      'All',
-      'Acestream',
-      'Sopcast'
-    ]
-
     this.state = {
       sourceId: '1',
       shows: [],
-      loading: true
-    }
-
-    this.styles = {
-      toolbarContainer: {
-        position: 'fixed',
-        width: '100%',
-        zIndex: 1
-      },
-    	box: {
-    		height: 65
-    	}
+      loading: true,
+      menuOpen: false
     };
 
     this.updateShowsList(this.state.sourceId);
   }
 
   updateShowsList = (sourceId) => {
-    this.serverRequest = getShows(this.sourcesUrl[sourceId]).then((result) => {
+    this.serverRequest = getShows(sourcesUrl[sourceId]).then((result) => {
       if (result !== undefined) {
         this.setState({
           sourceId: sourceId,
           shows: result.data,
-          loading: false
+          loading: false,
+          openMenu: false
         })
       }
     });
@@ -58,29 +61,43 @@ export default class App extends React.Component {
     this.serverRequest.abort();
   }
 
-  onSourceSelect = (sourceId) => {
+  handleSourceSelect = (sourceId) => {
     this.setState({
       sourceId: sourceId,
       shows: [],
-      loading: true
+      loading: true,
+      openMenu: this.state.openMenu
     })
     this.updateShowsList(sourceId);
+  }
+
+  handleToggleMenu = () => {
+    this.setState({
+      sourceId: this.state.sourceId,
+      shows: this.state.shows,
+      loading: this.state.loading,
+      openMenu: !this.state.openMenu
+    });
   }
 
   render() {
     return (
       <MuiThemeProvider>
         <div>
-          <div style={this.styles.toolbarContainer}>
+          <div style={appBarStyles.toolbarContainer}>
             <AppBar
               title="Sport Links"
               iconElementRight={<SelectShowSources
                                   source={this.state.sourceId}
-                                  onSourceSelect={this.onSourceSelect}/>}
-            />
+                                  onSourceSelect={this.handleSourceSelect}/>}
+              onLeftIconButtonTouchTap={this.handleToggleMenu} />
+            <DrawerLeft open={this.state.openMenu} onToggle={this.handleToggleMenu}/>
           </div>
-          <div style={this.styles.box}></div>
-          <ListShows shows={this.state.shows} source={this.sourceNames[this.state.sourceId]} loading={this.state.loading}/>
+          <div style={appBarStyles.box}></div>
+          <ListShows
+            shows={this.state.shows}
+            source={sourceNames[this.state.sourceId]}
+            loading={this.state.loading} />
         </div>
       </MuiThemeProvider>
     );

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import registerServiceWorker from './utils/sw-registration';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -12,6 +13,8 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+
+//registerServiceWorker();
 
 // Check for browser support of service worker
 if ('serviceWorker' in navigator) {
