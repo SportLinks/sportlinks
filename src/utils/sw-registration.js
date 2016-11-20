@@ -33,14 +33,20 @@ export default function Register() {
                 // have been added to the cache.
                 // It's the perfect time to display a "New content is available; please refresh."
                 // message in the page's interface.
+                window.alert('New or updated content is available.');
                 console.log('New or updated content is available.');
+                window.location.reload();
+
               } else {
                 // At this point, everything has been precached, but the service worker is not
                 // controlling the page. The service worker will not take control until the next
                 // reload or navigation to a page under the registered scope.
                 // It's the perfect time to display a "Content is cached for offline use." message.
+                window.alert('Content is cached, and will be available for offline use the next time the page is loaded.')
                 console.log('Content is cached, and will be available for offline use the ' +
                             'next time the page is loaded.')
+                window.location.reload();
+
               }
             break;
 

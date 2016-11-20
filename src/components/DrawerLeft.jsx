@@ -7,6 +7,10 @@ import Subheader from 'material-ui/Subheader';
 
 export default function DrawerLeft (props) {
 
+  var updateSW = () => {
+    window.location.reload();
+  }
+
   return (
     <Drawer
         docked={false}
@@ -14,11 +18,11 @@ export default function DrawerLeft (props) {
         open={props.open}
         onRequestChange={() => props.onToggle()} >
         <List>
-          <Subheader>Sport Links v0.1.4</Subheader>
+          <Subheader>Sport Links v0.1.4-25</Subheader>
           <Divider />
           <MenuItem onTouchTap={() => props.onToggle()}>Help</MenuItem>
           <Divider />
-          <MenuItem onTouchTap={() => props.onToggle()}>About</MenuItem>
+          <MenuItem onTouchTap={updateSW}>About</MenuItem>
           <Divider />
         </List>
     </Drawer>
