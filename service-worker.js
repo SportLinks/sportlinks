@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/sportlinks/asset-manifest.json","18b3709a394584fae5520403f6e1e199"],["/sportlinks/index.html","c7ff8096646a3f19a2cba9a4311120b2"],["/sportlinks/static/css/main.65027555.css","41e5e45b9b5d9ecaa09b72c11eed3386"],["/sportlinks/static/css/main.65027555.css.map","897fd36918e2007edab902a79694c131"],["/sportlinks/static/js/main.bd30eaa4.js","809b17b5e2b8a7d1bf3de2829dedac5a"],["/sportlinks/static/js/main.bd30eaa4.js.map","1dd6dd4655e7682fdc31dae3455d303f"]];
+var precacheConfig = [["/sportlinks/asset-manifest.json","dd0202d95bed013c3a31c166283caa6b"],["/sportlinks/index.html","f506a18dad4e1df5cb73618eea669c53"],["/sportlinks/static/css/main.65027555.css","41e5e45b9b5d9ecaa09b72c11eed3386"],["/sportlinks/static/css/main.65027555.css.map","897fd36918e2007edab902a79694c131"],["/sportlinks/static/js/main.ff1a71af.js","e2d3c30b1dc7aa056f3f2d33032083cb"],["/sportlinks/static/js/main.ff1a71af.js.map","93919da3e8c6753c243bb39a058e0957"]];
 var cacheName = 'sw-precache-v2-sportlinks-' + (self.registration ? self.registration.scope : '');
 
 
