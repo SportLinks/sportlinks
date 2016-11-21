@@ -10,7 +10,7 @@ import getVersion from '../services/getVersion';
 export default function DrawerLeft(props) {
 
   var checkNewVersion = () => {
-    getVersion(true).then((result) => {
+    getVersion().then((result) => {
       let version = result.data.version;
       if (version !== props.version) {
         window.alert('New version found :-)');
@@ -28,15 +28,13 @@ export default function DrawerLeft(props) {
         open={props.open}
         onRequestChange={() => props.onToggle()} >
         <List>
-          <Subheader>Sport Links {props.version ? 'v' + props.version: ''}</Subheader>
+          <Subheader><b>Sport Links {props.version ? 'v' + props.version: ''}</b></Subheader>
           <Divider />
           <MenuItem
-            containerElement={<Link to={'/results'} />}
+            containerElement={<Link to={'/help'} />}
             primaryText="Help" />
           <Divider />
           <MenuItem onTouchTap={checkNewVersion}>Check new version</MenuItem>
-          <Divider />
-          <MenuItem>About</MenuItem>
           <Divider />
         </List>
     </Drawer>

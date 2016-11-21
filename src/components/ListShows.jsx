@@ -27,7 +27,7 @@ export default function ListShows(props) {
                   key={index}
                   primaryText={listValue.name}
                   leftIcon={<ActionGrade />}
-                  href={listValue.urlAcestream}
+                  href={(listValue.urlAcestream !== undefined && listValue.urlAcestream !== '') ? listValue.urlAcestream : listValue.url}
                   secondaryText={
                     <p>
                       <span style={{color: 'black'}}>{listValue.type}</span> -- {listValue.kbps} kbps

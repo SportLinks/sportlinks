@@ -1,5 +1,9 @@
 import baseService from './baseService';
 
-export default function(url, cancel) {
-  return baseService(url, cancel);
+let cancel;
+
+export default function(url) {
+  let service = baseService(url, cancel);
+  cancel = service.cancel;
+  return service.result;
 }

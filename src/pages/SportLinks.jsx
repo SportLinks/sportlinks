@@ -47,7 +47,7 @@ export default class SportLinks extends React.Component {
   }
 
   updateShowsList = (sourceId) => {
-    this.serverRequest = getShows(sourcesUrl[sourceId], true).then((result) => {
+    this.serverRequest = getShows(sourcesUrl[sourceId]).then((result) => {
       if (result !== undefined) {
         this.setState({
           sourceId: sourceId,
@@ -61,7 +61,7 @@ export default class SportLinks extends React.Component {
   }
 
   updateVersion = () => {
-    getVersion(false).then((result) => {
+    getVersion().then((result) => {
       let version = result.data.version;
       console.log('version: ' + version);
       this.setState({

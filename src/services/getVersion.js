@@ -1,7 +1,10 @@
 import baseService from './baseService';
 
 const url = 'https://sportlinks-997d1.firebaseapp.com/version.json';
+let cancel;
 
-export default function(cancel) {
-  return baseService(url, cancel);
+export default function() {
+  let service = baseService(url, cancel);
+  cancel = service.cancel;
+  return service.result;
 }
