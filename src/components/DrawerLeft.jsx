@@ -4,11 +4,21 @@ import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
+import {Link} from 'react-router';
+import getVersion from '../services/getVersion';
 
-export default function DrawerLeft (props) {
+export default function DrawerLeft(props) {
 
-  var updateSW = () => {
-    window.location.reload();
+  var checkNewVersion = () => {
+    getVersion(true).then((result) => {
+      let version = result.data.version;
+      if (version !== props.version) {
+        window.alert('New version found :-)');
+        window.location.reload();
+      } else {
+        window.alert('No new version found');
+      }
+    });
   }
 
   return (
@@ -18,11 +28,15 @@ export default function DrawerLeft (props) {
         open={props.open}
         onRequestChange={() => props.onToggle()} >
         <List>
-          <Subheader>Sport Links v0.1.4-25</Subheader>
+          <Subheader>Sport Links {props.version ? 'v' + props.version: ''}</Subheader>
           <Divider />
-          <MenuItem onTouchTap={() => props.onToggle()}>Help</MenuItem>
+          <MenuItem
+            containerElement={<Link to={'/results'} />}
+            primaryText="Help" />
           <Divider />
-          <MenuItem onTouchTap={updateSW}>About</MenuItem>
+          <MenuItem onTouchTap={checkNewVersion}>Check new version</MenuItem>
+          <Divider />
+          <MenuItem>About</MenuItem>
           <Divider />
         </List>
     </Drawer>

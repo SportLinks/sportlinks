@@ -15,7 +15,7 @@ export default function Register() {
 
       // Check to see if there's an updated version of service-worker.js with new files to cache:
       // https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-registration-update-method
-      if (typeof registration.update == 'function') {
+      if (typeof registration.update === 'function') {
         registration.update();
       }
 
@@ -33,7 +33,7 @@ export default function Register() {
                 // have been added to the cache.
                 // It's the perfect time to display a "New content is available; please refresh."
                 // message in the page's interface.
-                window.alert('New or updated content is available.');
+                //window.alert('New or updated content is available.');
                 console.log('New or updated content is available.');
                 window.location.reload();
 
@@ -46,7 +46,6 @@ export default function Register() {
                 console.log('Content is cached, and will be available for offline use the ' +
                             'next time the page is loaded.')
                 window.location.reload();
-
               }
             break;
 

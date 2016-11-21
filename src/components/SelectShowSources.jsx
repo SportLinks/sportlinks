@@ -4,7 +4,7 @@ import MenuItem from 'material-ui/MenuItem';
 import ContentFilter from 'material-ui/svg-icons/content/filter-list';
 import IconButton from 'material-ui/IconButton';
 
-export default function IconMenuExampleControlled (props) {
+export default function IconMenuExampleControlled(props) {
 
   var handleChange = (event, value) => {
     props.onSourceSelect(value);

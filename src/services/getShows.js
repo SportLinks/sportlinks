@@ -1,5 +1,5 @@
 import baseService from './baseService';
 
-export default function(url) {
-  return baseService(url);
+export default function(url, cancel) {
+  return baseService(url, cancel);
 }

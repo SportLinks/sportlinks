@@ -3,8 +3,8 @@ import axios from 'axios';
 const CancelToken = axios.CancelToken;
 let source;
 
-export default function(url) {
-  if (source !== undefined) {
+export default function(url, cancel) {
+  if (source !== undefined && cancel) {
     source.cancel('currently operation canceled by the user.');
   }
   source = CancelToken.source();
