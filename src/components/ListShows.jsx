@@ -16,7 +16,7 @@ export default function ListShows(props) {
             primaryText={listValue.description}
             secondaryText={
               <p>
-                <span style={{color: 'black'}}>{dateFormat(listValue.startDate, "dd/mm HH:MM")}</span> -- {listValue.category_es}
+                <span style={{color: 'black'}}>{dateFormat(listValue.startDate + '+01:00', "dd/mm HH:MM")}</span> -- {listValue.category_es}
               </p>
             }
             secondaryTextLines={1}
