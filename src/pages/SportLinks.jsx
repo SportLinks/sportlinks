@@ -9,14 +9,12 @@ import getVersion from '../services/getVersion';
 
 const sourcesUrl = [
   'https://sportlinks.herokuapp.com/shows',
-  'https://sportlinks.herokuapp.com/shows?type=acestream',
-  'https://sportlinks.herokuapp.com/shows?type=sopcast'
+  'https://sportlinks.herokuapp.com/shows?type=p2p'
 ];
 
 const sourceNames = [
   'All',
-  'Acestream',
-  'Sopcast'
+  'P2P'
 ];
 
 const appBarStyles = {

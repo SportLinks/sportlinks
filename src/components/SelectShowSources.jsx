@@ -19,8 +19,7 @@ export default function IconMenuExampleControlled(props) {
         multiple={false}>
 
         <MenuItem value="0" primaryText="All"  />
-        <MenuItem value="1" primaryText="Acestream" />
-        <MenuItem value="2" primaryText="Sopcast"  />
+        <MenuItem value="1" primaryText="P2P" />
 
       </IconMenu>
     </div>
