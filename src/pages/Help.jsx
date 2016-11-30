@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';

@@ -236,7 +236,7 @@ module.exports = {
         runtimeCaching: [{
           handler: 'networkFirst',
           urlPattern: /shows.*$/,
-        }],
+        }]
       }
     )
   ],
