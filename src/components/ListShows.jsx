@@ -20,7 +20,7 @@ export default function ListShows(props) {
               </p>
             }
             secondaryTextLines={1}
-            primaryTogglesNestedList={false}
+            primaryTogglesNestedList={true}
             nestedItems={listValue.streamings.map(function(listValue, index) {
               return (
                 <ListItem
