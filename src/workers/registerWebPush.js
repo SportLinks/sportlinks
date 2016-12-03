@@ -64,7 +64,7 @@ export default function FirebaseRegisterPush() {
 }
 
 function sendTokenToServer(token) {
-  axios.get('https://sportlinks.herokuapp.com/shows' + '?token=' + token)
+  axios.get('https://sportlinks.herokuapp.com/shows?token=' + token)
   .catch(function(error) {
       console.log('Error: ', error)
   });

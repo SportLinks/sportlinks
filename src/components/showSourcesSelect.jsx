@@ -15,12 +15,15 @@ export default function IconMenuExampleControlled(props) {
       <IconMenu
         iconButtonElement={<IconButton><ContentFilter /></IconButton>}
         onChange={handleChange}
-        value={props.source}
+        value={props.sourceId}
         multiple={false}>
-
-        <MenuItem value="0" primaryText="All"  />
-        <MenuItem value="1" primaryText="P2P" />
-
+        {
+          props.sourceList.map(function(element, index) {
+            return (
+              <MenuItem key={element.id} value={element.id} primaryText={element.name}  />
+            )
+          })
+        }
       </IconMenu>
     </div>
   );

@@ -1,7 +1,15 @@
-import React from 'react';
+import React from 'react'
+import MenuPage from './pages/menuPage'
+import DialogPage from './pages/dialogPage'
 
 export default React.createClass({
   render: function() {
-    return React.cloneElement(this.props.children);
+    return (
+      <div>
+        <MenuPage />
+        <DialogPage />
+        {React.cloneElement(this.props.children)}
+      </div>
+    )
   }
-});
+})

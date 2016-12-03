@@ -7,7 +7,7 @@ import dateFormat from 'dateformat';
 export default function ListShows(props) {
   return (
     <List>
-      <Subheader>Sport Shows ({props.source}) {props.loading ? 'Loading...' : ''}</Subheader>
+      <Subheader>Sport Shows ({props.source}) {props.date!==undefined ? 'at ' + props.date : ''} {props.loading ? 'Loading...' : ''}</Subheader>
       {(props.shows.length===0 && !props.loading) ? (<ListItem primaryText={'Sorry, no results found'}/>) : ''}
       {props.shows.map(function(listValue, index){
         return (
@@ -34,7 +34,8 @@ export default function ListShows(props) {
                     </p>
                   }
                 />
-              )})}
+              )
+            })}
           />
         )
       })}

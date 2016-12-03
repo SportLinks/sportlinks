@@ -26,6 +26,9 @@ export default function Register() {
             case 'redundant':
               console.error('The installing service worker became redundant.');
             break;
+
+            default:
+            break
           }
         }
       }
