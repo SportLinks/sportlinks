@@ -5,7 +5,7 @@ import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 import {browserHistory} from 'react-router'
 
-const appBarStyles = {
+const styles = {
   toolbarContainer: {
     position: 'fixed',
     width: '100%',
@@ -13,10 +13,7 @@ const appBarStyles = {
   },
   box: {
     height: 65
-  }
-}
-
-const textStyles = {
+  },
   text: {
     margin: '10px',
     padding: '0px'
@@ -27,14 +24,14 @@ export default function Help() {
   return(
     <MuiThemeProvider>
       <div>
-        <div style={appBarStyles.toolbarContainer}>
+        <div style={styles.toolbarContainer}>
           <AppBar
             title="Help"
             iconElementLeft={<IconButton><NavigationArrowBack /></IconButton>}
-            onLeftIconButtonTouchTap={() => browserHistory.goBack()} />
+            onLeftIconButtonTouchTap={() => browserHistory.push('/')} />
         </div>
-        <div style={appBarStyles.box}></div>
-        <div style={textStyles.text}>
+        <div style={styles.box}></div>
+        <div style={styles.text}>
           This application is not for profit and is part of a proof of concept of a Progressive Web App.<br/><br/>
           The texts and links of sporting events shown in the application are collected from public webs.
           <br/><br/>

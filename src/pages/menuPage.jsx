@@ -3,7 +3,8 @@
 import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {connect} from 'react-redux'
-import {toggleMenuAction, fetchVersionAction, userAuthAction, receiveLogoutAction} from '../state/actions'
+import {toggleMenuAction, fetchVersionAction, receiveLogoutAction} from '../state/actions'
+import {browserHistory} from 'react-router'
 import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
 import Divider from 'material-ui/Divider'
@@ -36,8 +37,12 @@ function MenuPage(props){
             primaryText="Help" />
           <Divider />
           <MenuItem
+            containerElement={<Link to={'/notification'} />}
+            primaryText="Notifications" />
+          <Divider />
+          <MenuItem
             onTouchTap={props.handleCheckNewVersion}>
-            Check new version
+            Check for Update
           </MenuItem>
           <Divider />
           <MenuItem
@@ -53,11 +58,8 @@ function MenuPage(props){
   )
 }
 
-function login(dispatch) {
-  let provider = new firebase.auth.GoogleAuthProvider()
-  firebase.auth().signInWithRedirect(provider).then(() => {
-    dispatch(userAuthAction())
-  })
+function login() {
+  browserHistory.push('/login')
 }
 
 function logout(dispatch) {

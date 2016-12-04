@@ -1,6 +1,5 @@
-import {Map} from 'immutable'
-import {SET_STATE,
-        TOGGLE_MENU,
+import Immutable from 'immutable'
+import {TOGGLE_MENU,
         HIDE_MENU,
         FETCH_SHOWS_REQUEST,
         FETCH_SHOWS_SUCCESS,
@@ -9,6 +8,33 @@ import {SET_STATE,
         CLOSE_DIALOG,
         LOGIN,
         LOGOUT} from './actions'
+
+const initialState = Immutable.fromJS({
+  shows: {
+    loading: false,
+    sourceId: '1',
+    list: [],
+    receivedAt: undefined
+  },
+  menu: {
+    open: false
+  },
+  dialog: {
+    open: false,
+    title: '',
+    text: '',
+    hasToRefress: false
+  },
+  user: {
+    id: undefined,
+    name: undefined
+  },
+  navigation: {
+    privatePage: undefined
+  },
+  version: '0.1.0',
+  silentUpdate: false
+})
 
 function toggleMenu(state) {
   return state.updateIn(['menu', 'open'], value => !value)
@@ -41,26 +67,20 @@ function closeDialog(state, newState) {
   return state.merge(newState)
 }
 
-export default function(state = Map(), action) {
+export default function(state = initialState, action) {
   switch (action.type) {
-    case SET_STATE:
-      return state.merge(action.state)
     case TOGGLE_MENU:
       return toggleMenu(state, action.state)
     case HIDE_MENU:
       return hideMenu(state)
-    case FETCH_SHOWS_REQUEST:
-      return state.merge(action.state)
-    case FETCH_SHOWS_SUCCESS:
-      return state.merge(action.state)
-    case FETCH_VERSION_REQUEST:
-      return state.merge(action.state)
     case FETCH_VERSION_SUCCESS:
       return updateVersion(state, action.state)
     case CLOSE_DIALOG:
       return closeDialog(state, action.state)
+    case FETCH_SHOWS_REQUEST:
+    case FETCH_SHOWS_SUCCESS:
+    case FETCH_VERSION_REQUEST:
     case LOGIN:
-      return state.merge(action.state)
     case LOGOUT:
       return state.merge(action.state)
     default:

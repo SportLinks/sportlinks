@@ -3,3 +3,25 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.google-signin-btn {
+  display: inline-block;
+  width: 250px;
+  height: 60px;
+  background-image: url('/images/google/btn_google_signin_dark_normal_web@2x.png');
+  background-size: 250px 60px;
+  background-repeat: no-repeat;
+  align: center;
+}
+
+.google-signin-btn:active {
+  background-image: url('/images/google/btn_google_signin_dark_pressed_web@2x.png');
+}
+
+.title {
+  margin: 10px;
+  position: relative;
+  line-height: 1.25;
+  display: inline;
+  white-space: pre-wrap;
+}

@@ -14,20 +14,12 @@ export const CLOSE_DIALOG = 'CLOSE_DIALOG'
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
 
-export function toggleMenuAction() {
-  return {
-    type: TOGGLE_MENU
-  }
-}
+export const toggleMenuAction = () => ({type: TOGGLE_MENU})
 
-export function hideMenuAction() {
-  return {
-    type: HIDE_MENU
-  }
-}
+export const hideMenuAction = () => ({type: HIDE_MENU})
 
-export function requestShowsAction(sourceId) {
-  return {
+export const requestShowsAction = (sourceId) =>
+  ({
     type: FETCH_SHOWS_REQUEST,
     state: {
       shows: {
@@ -37,11 +29,10 @@ export function requestShowsAction(sourceId) {
         receivedAt: undefined
       }
     }
-  }
-}
+  })
 
-export function receiveShowsAction(sourceId, shows) {
-  return {
+export const receiveShowsAction = ({sourceId, shows} = {}) =>
+  ({
     type: FETCH_SHOWS_SUCCESS,
     state: {
       shows: {
@@ -51,21 +42,19 @@ export function receiveShowsAction(sourceId, shows) {
         receivedAt: Date.now()
       }
     }
-  }
-}
+  })
 
-export function fetchShowsAction(sourceId) {
-  return dispatch => {
+export const fetchShowsAction = (sourceId) =>
+  dispatch => {
     dispatch(requestShowsAction(sourceId))
     return getShows(sourceId)
     .then(response => {
-      dispatch(receiveShowsAction(sourceId, response.data))}
+      dispatch(receiveShowsAction({sourceId: sourceId, shows: response.data}))}
     )
   }
-}
 
-export function requestVersionAction() {
-  return {
+export const requestVersionAction = () =>
+  ({
     type: FETCH_VERSION_REQUEST,
     state: {
       dialog: {
@@ -74,31 +63,28 @@ export function requestVersionAction() {
         text: 'Check new version...'
       }
     }
-  }
-}
+  })
 
-export function receiveVersionAction(version, silentUpdate) {
-  return {
+export const receiveVersionAction = ({version='', silentUpdate=false} = {}) =>
+  ({
     type: FETCH_VERSION_SUCCESS,
     state: {
-      version: version,
-      silentUpdate: silentUpdate
+      version,
+      silentUpdate
     }
-  }
-}
+  })
 
-export function fetchVersionAction(silentUpdate) {
-  return dispatch => {
+export const fetchVersionAction = (silentUpdate) =>
+  dispatch => {
     if (!silentUpdate) dispatch(requestVersionAction())
     return getVersion()
     .then(response => {
-      dispatch(receiveVersionAction(response.data.version, silentUpdate))
+      dispatch(receiveVersionAction({version: response.data.version, silentUpdate: silentUpdate}))
     })
   }
-}
 
-export function closeDialogAction() {
-  return {
+export const closeDialogAction = () =>
+  ({
     type: CLOSE_DIALOG,
     state: {
       dialog: {
@@ -107,24 +93,22 @@ export function closeDialogAction() {
         text: ''
       }
     }
-  }
-}
+  })
 
-export function receiveLoginAction(login) {
-  return {
+export const receiveLoginAction = ({uid=undefined, name=''} = {}) =>
+  ({
     type: LOGIN,
     state: {
       user: {
-        id: login.uid,
-        name: login.name,
+        id: uid,
+        name: name,
       }
     }
-  }
-}
+  })
 
-export function userAuthAction() {
-  return dispatch => {
-    firebase.auth().onAuthStateChanged((user) => {
+export const userAuthAction = () =>
+  dispatch => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
         dispatch(receiveLoginAction({
           uid: user.uid,
@@ -133,10 +117,9 @@ export function userAuthAction() {
       }
     })
   }
-}
 
-export function receiveLogoutAction() {
-  return {
+export const receiveLogoutAction = () =>
+  ({
     type: LOGOUT,
     state: {
       user: {
@@ -144,5 +127,4 @@ export function receiveLogoutAction() {
         name: undefined
       }
     }
-  }
-}
+  })
