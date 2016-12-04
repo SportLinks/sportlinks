@@ -1,21 +1,12 @@
 import React from 'react'
-import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import AppBar from 'material-ui/AppBar'
-import IconButton from 'material-ui/IconButton'
-import {browserHistory} from 'react-router'
+import PageHeader from '../components/pageHeader'
 
 export default function Help() {
   return(
     <MuiThemeProvider>
       <div>
-        <div className={'toolbar-container'}>
-          <AppBar
-            title="Help"
-            iconElementLeft={<IconButton><NavigationArrowBack /></IconButton>}
-            onLeftIconButtonTouchTap={() => browserHistory.push('/')} />
-        </div>
-        <div className={'box'}></div>
+        <PageHeader title={'Help'} />
         <div className={'text'}>
           This application is not for profit and is part of a proof of concept of a Progressive Web App.<br/><br/>
           The texts and links of sporting events shown in the application are collected from public webs.
