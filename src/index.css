@@ -18,10 +18,17 @@ body {
   background-image: url('/images/google/btn_google_signin_dark_pressed_web@2x.png');
 }
 
-.title {
+.toolbar-container {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.box {
+  height: 65px;
+}
+
+.text {
+  font-size: small;
   margin: 10px;
-  position: relative;
-  line-height: 1.25;
-  display: inline;
-  white-space: pre-wrap;
 }

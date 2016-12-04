@@ -12,13 +12,6 @@ import List from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
 import {Link} from 'react-router'
 
-const textStyles = {
-  text: {
-    "fontSize": 'small',
-    "paddingLeft": '12px'
-  }
-}
-
 function MenuPage(props){
   return (
     <MuiThemeProvider>
@@ -51,7 +44,7 @@ function MenuPage(props){
           </MenuItem>
           <Divider />
           <br />
-          <div style={textStyles.text}><span>{props.name}</span></div>
+          <div className={'text'}><span>{props.name}</span></div>
         </List>
       </Drawer>
     </MuiThemeProvider>

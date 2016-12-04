@@ -9,34 +9,19 @@ import IconButton from 'material-ui/IconButton'
 import {browserHistory} from 'react-router'
 import {userAuthAction} from '../state/actions'
 
-const styles = {
-  toolbarContainer: {
-    position: 'fixed',
-    width: '100%',
-    zIndex: 1
-  },
-  box: {
-    height: 65
-  },
-  text: {
-    margin: '10px',
-    padding: '0px'
-  }
-}
-
 function Login(props) {
   return(
     <MuiThemeProvider>
       <div>
-        <div style={styles.toolbarContainer}>
+        <div className={'toolbar-container'}>
           <AppBar
             title="Login"
             iconElementLeft={<IconButton><NavigationArrowBack /></IconButton>}
             onLeftIconButtonTouchTap={() => browserHistory.push('/')} />
         </div>
-        <div style={styles.box}></div>
+        <div className={'box'}></div>
         <br />
-        <div style={styles.text}>Log in the application to use its advanced features:</div>
+        <div className={'text'}>Log in the application to use its advanced features:</div>
         <br /><br />
         <div style={{'text-align': 'center'}}>
           <p className={'google-signin-btn'} onClick={props.handleLogin}/>

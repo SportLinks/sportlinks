@@ -5,33 +5,18 @@ import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 import {browserHistory} from 'react-router'
 
-const styles = {
-  toolbarContainer: {
-    position: 'fixed',
-    width: '100%',
-    zIndex: 1
-  },
-  box: {
-    height: 65
-  },
-  text: {
-    margin: '10px',
-    padding: '0px'
-  }
-}
-
 export default function Help() {
   return(
     <MuiThemeProvider>
       <div>
-        <div style={styles.toolbarContainer}>
+        <div className={'toolbar-container'}>
           <AppBar
             title="Help"
             iconElementLeft={<IconButton><NavigationArrowBack /></IconButton>}
             onLeftIconButtonTouchTap={() => browserHistory.push('/')} />
         </div>
-        <div style={styles.box}></div>
-        <div style={styles.text}>
+        <div className={'box'}></div>
+        <div className={'text'}>
           This application is not for profit and is part of a proof of concept of a Progressive Web App.<br/><br/>
           The texts and links of sporting events shown in the application are collected from public webs.
           <br/><br/>

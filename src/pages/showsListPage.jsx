@@ -8,22 +8,11 @@ import {toggleMenuAction, fetchShowsAction} from '../state/actions'
 import {getNameSource, getSourceList} from '../services/showsService'
 import dateFormat from 'dateformat'
 
-const appBarStyles = {
-  toolbarContainer: {
-    position: 'fixed',
-    width: '100%',
-    zIndex: 1
-  },
-  box: {
-    height: 65
-  }
-}
-
 function SportLinks(props) {
   return (
     <MuiThemeProvider>
       <div>
-        <div style={appBarStyles.toolbarContainer}>
+        <div className={'toolbar-container'}>
           <AppBar
             title="Sport Links"
             iconElementRight={<ShowSourcesSelect
@@ -32,7 +21,7 @@ function SportLinks(props) {
                                 onSourceSelect={props.handleSourceSelect}/>}
             onLeftIconButtonTouchTap={props.handleToggleMenu} />
         </div>
-        <div style={appBarStyles.box}></div>
+        <div className={'box'}></div>
         <ShowsList
           shows={props.shows}
           source={getNameSource(props.sourceId)}
