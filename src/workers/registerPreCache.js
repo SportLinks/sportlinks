@@ -7,25 +7,25 @@ export default function Register() {
     navigator.serviceWorker.register('service-worker.js', {scope: './'})
     .then(function(registration) {
 
-      console.log('Cache webworker registration successful, scope is:', registration.scope);
+      console.log('Cache webworker registration successful, scope is:', registration.scope)
 
       if (typeof registration.update === 'function') {
-        registration.update();
+        registration.update()
       }
 
       registration.onupdatefound = function() {
-        var installingWorker = registration.installing;
+        var installingWorker = registration.installing
         installingWorker.onstatechange = function() {
           switch (installingWorker.state) {
             case 'installed':
               if (navigator.serviceWorker.controller) {
-                console.log('New or updated content is available.');
+                console.log('New or updated content is available.')
               }
-            break;
+            break
 
             case 'redundant':
-              console.error('The installing service worker became redundant.');
-            break;
+              console.error('The installing service worker became redundant.')
+            break
 
             default:
             break
@@ -33,11 +33,11 @@ export default function Register() {
         }
       }
 
-      return navigator.serviceWorker.ready;
+      return navigator.serviceWorker.ready
 
     }).catch(function(e) {
-      console.error('Error during service worker registration:', e);
-    });
+      console.error('Error during service worker registration:', e)
+    })
 
   }
 }
