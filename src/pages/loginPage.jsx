@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {connect} from 'react-redux'
 import {userAuthAction} from '../state/actions'
 import PageHeader from '../components/pageHeader'
+import {login} from '../services/authService'
 
 function Login(props) {
   return(
@@ -22,9 +23,8 @@ function Login(props) {
   )
 }
 
-function login(dispatch) {
-  let provider = new firebase.auth.GoogleAuthProvider()
-  firebase.auth().signInWithRedirect(provider).then(
+function handlelogin(dispatch) {
+  login().then(
     (result) => {
       dispatch(userAuthAction())
     },
@@ -35,7 +35,7 @@ function login(dispatch) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleLogin: () => login(dispatch),
+    handleLogin: () => handlelogin(dispatch),
   }
 }
 

@@ -11,6 +11,7 @@ import Divider from 'material-ui/Divider'
 import List from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
 import {Link} from 'react-router'
+import {logout} from '../services/authService'
 
 function MenuPage(props){
   return (
@@ -51,12 +52,12 @@ function MenuPage(props){
   )
 }
 
-function login() {
+function handleLogin() {
   browserHistory.push('/login')
 }
 
-function logout(dispatch) {
-  firebase.auth().signOut().then(() => {
+function handleLogout(dispatch) {
+  logout().then(() => {
     dispatch(receiveLogoutAction())
   })
 }
@@ -73,8 +74,8 @@ function mapDispatchToProps(dispatch) {
   return {
     handleToggleMenu: () => dispatch(toggleMenuAction()),
     handleCheckNewVersion: () => dispatch(fetchVersionAction()),
-    handleLogin: () => login(dispatch),
-    handleLogout: () => logout(dispatch)
+    handleLogin: () => handleLogin(dispatch),
+    handleLogout: () => handleLogout(dispatch)
   }
 }
 

@@ -1,5 +1,3 @@
-/* global firebase:true */
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Router, Route, browserHistory} from 'react-router'
@@ -21,6 +19,7 @@ import {fetchShowsAction,
         fetchVersionAction,
         userAuthAction,
         hideMenuAction} from './state/actions'
+import {authUserListener, loginListener} from './services/authService'
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -56,35 +55,6 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 )
-
-function authUserListener(nextState, replace, callback) {
-  let unsubscribe = firebase.auth().onAuthStateChanged(function(user) {
-    unsubscribe()
-    if (!user) {
-      if (localStorage) {
-        localStorage.setItem('privatePage', nextState.location.pathname)
-      }
-      replace('/login')
-    }
-    callback()
-  })
-}
-
-function loginListener(nextState, replace, callback) {
-  let unsubscribe = firebase.auth().onAuthStateChanged(function(user) {
-    unsubscribe()
-    if (user) {
-      if (localStorage) {
-        let privatePage = localStorage.getItem('privatePage') || '/'
-        localStorage.removeItem('privatePage')
-        replace(privatePage)
-      } else {
-        replace('/')
-      }
-    }
-    callback()
-  })
-}
 
 browserHistory.listen(location => {
   if (store.getState().getIn(['menu','open'])) {
