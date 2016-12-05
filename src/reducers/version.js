@@ -17,11 +17,11 @@ export const requestVersionAction = () =>
     }
   })
 
-export const receiveVersionAction = ({version='', silentUpdate=false} = {}) =>
+export const receiveVersionAction = ({number='', silentUpdate=false} = {}) =>
   ({
     type: FETCH_VERSION_SUCCESS,
     state: {
-      version,
+      number,
       silentUpdate
     }
   })
@@ -31,7 +31,7 @@ export const fetchVersionAction = (silentUpdate) =>
     if (!silentUpdate) dispatch(requestVersionAction())
     return getVersion()
     .then(response => {
-      dispatch(receiveVersionAction({version: response.data.version, silentUpdate: silentUpdate}))
+      dispatch(receiveVersionAction({number: response.data.version, silentUpdate: silentUpdate}))
     })
   }
 
@@ -49,7 +49,7 @@ export const closeDialogAction = () =>
 
 function updateVersion(state, newState) {
   if (!newState.silentUpdate) {
-    let newVersion = (state.get('version') !== newState.number)
+    let newVersion = (state.get('number') !== newState.number)
     let text = (newVersion) ? 'New version found :-)' : 'No new version found :-/'
     newState.dialog = {
       open: true,
