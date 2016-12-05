@@ -3,7 +3,9 @@
 import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {connect} from 'react-redux'
-import {toggleMenuAction, fetchVersionAction, receiveLogoutAction} from '../state/actions'
+import {toggleMenuAction} from '../reducers/menu'
+import {fetchVersionAction} from '../reducers/version'
+import {receiveLogoutAction} from '../reducers/user'
 import {browserHistory} from 'react-router'
 import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
@@ -65,7 +67,7 @@ function handleLogout(dispatch) {
 function mapStateToProps(state) {
   return {
     openMenu: state.getIn(['menu', 'open']),
-    version: state.get('version'),
+    version: state.getIn(['version','number']),
     name: state.getIn(['user', 'name'])
   }
 }

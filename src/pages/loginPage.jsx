@@ -3,7 +3,7 @@
 import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {connect} from 'react-redux'
-import {userAuthAction} from '../state/actions'
+import {userAuthAction} from '../reducers/user'
 import PageHeader from '../components/pageHeader'
 import {login} from '../services/authService'
 

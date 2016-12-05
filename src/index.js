@@ -6,7 +6,7 @@ import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
-import rootReducer from './state/reducer'
+import rootReducer from './reducers/index'
 import './index.css'
 import App from './App'
 import registerPreCacheServiceWorker from './workers/registerPreCache'
@@ -15,10 +15,10 @@ import {SportLinksContainer} from './pages/showsListPage'
 import HelpPage from './pages/helpPage'
 import LoginPage from './pages/loginPage'
 import NotificationPage from './pages/notificationPage'
-import {fetchShowsAction,
-        fetchVersionAction,
-        userAuthAction,
-        hideMenuAction} from './state/actions'
+import {fetchShowsAction} from './reducers/shows'
+import {fetchVersionAction} from './reducers/version'
+import {userAuthAction} from './reducers/user'
+import {hideMenuAction} from './reducers/menu'
 import {authUserListener, loginListener} from './services/authService'
 
 // Needed for onTouchTap

@@ -1,7 +1,7 @@
 import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import DialogSimple from '../components/dialogSimple'
-import {closeDialogAction} from '../state/actions'
+import {closeDialogAction} from '../reducers/version'
 import {connect} from 'react-redux'
 
 function DialogPage(props) {
@@ -17,7 +17,7 @@ function DialogPage(props) {
 }
 
 function mapStateToProps(state) {
-  return state.get('dialog').toJS()
+  return state.getIn(['version','dialog']).toJS()
 }
 
 function mapDispatchToProps(dispatch) {
