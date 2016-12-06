@@ -50,7 +50,7 @@ export const closeDialogAction = () =>
 function updateVersion(state, newState) {
   if (!newState.silentUpdate) {
     let newVersion = (state.get('number') !== newState.number)
-    let text = (newVersion) ? 'New version found :-)' : 'No new version found :-/'
+    let text = (newVersion) ? 'New version found :-)' : 'No updates found. You already have the latest version.'
     newState.dialog = {
       open: true,
       title: 'Check for Update',
