@@ -1,4 +1,4 @@
-import baseService from './baseService'
+import baseService from '../../../services/baseService'
 
 const url = 'https://sportlinks-997d1.firebaseapp.com/version.json'
 let cancel

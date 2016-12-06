@@ -1,4 +1,4 @@
-import baseService from './baseService'
+import baseService from '../../../services/baseService'
 
 const sources = [
   {

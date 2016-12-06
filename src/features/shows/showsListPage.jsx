@@ -1,12 +1,12 @@
 import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
-import ShowsList from '../components/showsList'
-import ShowSourcesSelect from '../components/showSourcesSelect'
+import ShowsList from './components/showsList'
+import ShowSourcesSelect from './components/showSourcesSelect'
 import {connect} from 'react-redux'
-import {toggleMenuAction} from '../reducers/menu'
-import {fetchShowsAction} from '../reducers/shows'
-import {getNameSource, getSourceList} from '../services/showsService'
+import {toggleMenuAction} from '../menu/reducers/menu'
+import {fetchShowsAction} from './reducers/shows'
+import {getNameSource, getSourceList} from './services/showsService'
 import dateFormat from 'dateformat'
 
 function SportLinks(props) {

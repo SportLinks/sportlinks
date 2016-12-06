@@ -1,6 +1,6 @@
 import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import PageHeader from '../components/pageHeader'
+import PageHeader from '../../components/pageHeader'
 
 export default function Notification() {
   return(
