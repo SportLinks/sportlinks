@@ -19,6 +19,7 @@ import HelpIcon from 'material-ui/svg-icons/action/help-outline'
 import FeedbackIcon from 'material-ui/svg-icons/action/feedback'
 import SystemUpdateIcon from 'material-ui/svg-icons/notification/system-update'
 import AccountCircleIcon from 'material-ui/svg-icons/action/account-circle'
+import ExitToAppIcon from 'material-ui/svg-icons/action/exit-to-app'
 import LiveTvIcon from 'material-ui/svg-icons/notification/live-tv'
 
 import {CardHeader} from 'material-ui/Card';
@@ -43,6 +44,7 @@ function MenuPage(props){
             title={props.name}
             subtitle="jmlopezdona@gmail.com"
             avatar={props.avatar}
+            style={{paddingRight: '0px'}}
           /> :
           <MenuItem
             onTouchTap={props.handleLogin}
@@ -71,7 +73,7 @@ function MenuPage(props){
           <MenuItem
             onTouchTap={props.handleLogout}
             primaryText={'Logout'}
-            leftIcon={<AccountCircleIcon />} />
+            leftIcon={<ExitToAppIcon />} />
           : '' }
 
           <MenuItem
