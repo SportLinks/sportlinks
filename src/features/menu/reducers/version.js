@@ -11,7 +11,7 @@ export const requestVersionAction = () =>
     state: {
       dialog: {
         open: true,
-        title: 'Information',
+        title: 'Check for Update',
         text: 'Check new version...'
       }
     }
@@ -53,7 +53,7 @@ function updateVersion(state, newState) {
     let text = (newVersion) ? 'New version found :-)' : 'No new version found :-/'
     newState.dialog = {
       open: true,
-      title: 'Information',
+      title: 'Check for Update',
       text: text,
       hasToRefress: newVersion
     }

@@ -14,7 +14,7 @@ function Login(props) {
         <PageHeader title={'Login'} />
         <div className={'text'}>Log in the application to use its advanced features:</div>
         <br /><br />
-        <div style={{'text-align': 'center'}}>
+        <div style={{'textAlign': 'center'}}>
           <p className={'google-signin-btn'} onClick={props.handleLogin}/>
         </div>
 

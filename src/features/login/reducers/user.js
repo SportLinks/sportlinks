@@ -4,12 +4,13 @@ import {getUser} from '../services/authService'
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
 
-export const receiveLoginAction = ({uid=undefined, name=''} = {}) =>
+export const receiveLoginAction = ({uid=undefined, name='', avatar=''} = {}) =>
   ({
     type: LOGIN,
     state: {
       id: uid,
       name: name,
+      avatar: avatar
     }
   })
 
@@ -19,7 +20,8 @@ export const userAuthAction = () =>
       if (user) {
         dispatch(receiveLoginAction({
           uid: user.uid,
-          name: user.displayName
+          name: user.displayName,
+          avatar: user.photoURL
         }))
       }
     })
@@ -30,13 +32,15 @@ export const receiveLogoutAction = () =>
     type: LOGOUT,
     state: {
       id:  undefined,
-      name: undefined
+      name: undefined,
+      avatar: undefined
     }
   })
 
 const initialState = Immutable.fromJS({
   id: undefined,
-  name: undefined
+  name: undefined,
+  avatar: undefined
 })
 
 export default function user(state = initialState, action) {
