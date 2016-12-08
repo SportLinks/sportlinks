@@ -1,5 +1,6 @@
 export default function Register() {
   if ('serviceWorker' in navigator &&
+      process.env.NODE_ENV === "production" &&
      (window.location.protocol === 'https:' ||
       window.location.hostname === 'localhost' ||
       window.location.hostname.indexOf('127.') === 0)) {
