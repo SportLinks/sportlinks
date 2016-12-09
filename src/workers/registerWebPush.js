@@ -1,6 +1,7 @@
 /* global firebase:true */
 
 import axios from 'axios'
+import firebase from 'firebase'
 
 export default function FirebaseRegisterPush() {
   // Retrieve Firebase Messaging object.

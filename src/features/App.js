@@ -5,7 +5,6 @@ import {Provider} from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import rootReducer from '../reducers/rootReducer'
-import MenuPage from './menu/menuPage'
 import {SportLinksContainer} from './shows/showsListPage'
 import HelpPage from './help/helpPage'
 import LoginPage from './login/loginPage'
@@ -48,8 +47,8 @@ export default React.createClass({
           <Route component={BaseRoute}>
             <Route path="/" component={SportLinksContainer} />
             <Route path="/help" component={HelpPage} />
-            <Route path="/notification" component={NotificationPage} />
-            <Route path="/login" component={LoginPage} />
+            <Route path="/notification" component={NotificationPage} onEnter={authUserListener}/>
+            <Route path="/login" component={LoginPage} onEnter={loginListener}/>
           </Route>
         </Router>
       </Provider>

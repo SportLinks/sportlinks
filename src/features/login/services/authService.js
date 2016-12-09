@@ -1,8 +1,10 @@
 /* global firebase:true */
+import firebaseApp from '../../../utils/firebase_setup'
+import firebase from 'firebase'
 
 export const getUser = () => {
   return new Promise((resolve, reject) => {
-    let unsubscribe = firebase.auth().onAuthStateChanged(function(user) {
+    let unsubscribe = firebaseApp.auth().onAuthStateChanged(function(user) {
       unsubscribe()
       resolve(user)
     })
@@ -12,11 +14,11 @@ export const getUser = () => {
 
 export const login = () => {
   let provider = new firebase.auth.GoogleAuthProvider()
-  return firebase.auth().signInWithRedirect(provider)
+  return firebaseApp.auth().signInWithRedirect(provider)
 }
 
 export const logout = () => {
-  return firebase.auth().signOut()
+  return firebaseApp.auth().signOut()
 }
 
 export const authUserListener = (nextState, replace, callback) => {

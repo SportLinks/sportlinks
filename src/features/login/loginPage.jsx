@@ -1,5 +1,3 @@
-/* global firebase:true */
-
 import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {connect} from 'react-redux'
