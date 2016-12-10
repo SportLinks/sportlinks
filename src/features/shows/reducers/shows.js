@@ -15,14 +15,14 @@ export const requestShowsAction = (sourceId) =>
     }
   })
 
-export const receiveShowsAction = ({sourceId, shows} = {}) =>
+export const receiveShowsAction = ({sourceId, shows, receivedAt} = {}) =>
   ({
     type: FETCH_SHOWS_SUCCESS,
     state: {
       loading: false,
       sourceId: sourceId,
       list: shows,
-      receivedAt: Date.now()
+      receivedAt: receivedAt
     }
   })
 
@@ -31,7 +31,11 @@ export const fetchShowsAction = (sourceId) =>
     dispatch(requestShowsAction(sourceId))
     return getShows(sourceId)
     .then(response => {
-      dispatch(receiveShowsAction({sourceId: sourceId, shows: response.data}))}
+      dispatch(receiveShowsAction({
+        sourceId: sourceId,
+        shows: response.data.shows,
+        receivedAt: response.data.date
+      }))}
     )
   }
 
