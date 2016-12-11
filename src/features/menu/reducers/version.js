@@ -64,8 +64,8 @@ function updateVersion(state, newState) {
 
 function closeDialog(state, newState) {
   if (state.getIn(['dialog', 'hasToRefress'])) {
-    window.location.reload()
     state.deleteIn(['dialog', 'hasToRefress'])
+    window.location.reload()
   }
   return state.merge(newState)
 }
