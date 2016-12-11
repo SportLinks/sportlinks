@@ -1,4 +1,5 @@
 import jsdom from 'jsdom';
+import injectTapEventPlugin from 'react-tap-event-plugin'
 
 const doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
 const win = doc.defaultView;
@@ -11,3 +12,5 @@ Object.keys(window).forEach((key) => {
     global[key] = window[key];
   }
 });
+
+injectTapEventPlugin()

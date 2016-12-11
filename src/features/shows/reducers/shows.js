@@ -36,7 +36,7 @@ export const fetchShowsAction = (sourceId) =>
         shows: response.data.shows,
         receivedAt: response.data.date
       }))}
-    )
+    ).catch((err) => console.log(err))
   }
 
 const initialState = Immutable.fromJS({

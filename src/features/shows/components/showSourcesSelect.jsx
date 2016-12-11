@@ -4,10 +4,11 @@ import MenuItem from 'material-ui/MenuItem';
 import ContentFilter from 'material-ui/svg-icons/content/filter-list';
 import IconButton from 'material-ui/IconButton';
 
-export default function IconMenuExampleControlled(props) {
+export default function showSourcesSelect(props) {
 
   var handleChange = (event, value) => {
-    props.onSourceSelect(value);
+    console.log('event ', event)
+    props.onSourceSelect(value || event.target.value);
   };
 
   return (
@@ -16,15 +17,15 @@ export default function IconMenuExampleControlled(props) {
         iconButtonElement={<IconButton><ContentFilter /></IconButton>}
         onChange={handleChange}
         value={props.sourceId}
-        multiple={false}>
-        {
+        multiple={false}
+        children={
           props.sourceList.map(function(element, index) {
             return (
               <MenuItem key={element.id} value={element.id} primaryText={element.name}  />
             )
           })
         }
-      </IconMenu>
+      />
     </div>
   );
 }
